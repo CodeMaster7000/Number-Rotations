@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>K-Cycles Checker</title>
+</head>
+<body>
+    <script>
+        function CheckKCycles(n, s) {
+            var ff = true;
+            var x = 0;
+            document.write("All K-shifts:<br>");
+            for (var i = 0; i < n; i++) {
+                // Splitting the number at index i, and adding to the front
+                var shifted = s.substring(i) + s.substring(0, i);
+                x = shifted.length;
+                document.write(shifted + "<br>");
+                // Checking if the  outputted is greater than or equal to the element itself.
+                if (x >= s.length) {
+                    continue;
+                }
+                ff = false;
+                break;
+            }
+            if (ff) {
+                document.write("<br>K-cycle shifts are larger than the element.");
+            } else {
+                document.write("<br>K-cycle shifts are not larger than the element.");
+            }
+        }
+        var s = prompt("Enter the number string (s):");
+        var n = parseInt(prompt("Enter the number of digits (n):"));
+        CheckKCycles(n, s);
+    </script>
+</body>
+</html>
